@@ -1,2 +1,2 @@
 # msTeamsWebexTab
-Add the Webex Tab into Microsoft Teams Channels
+Automatically add the Webex Tab into Microsoft Teams Channels
