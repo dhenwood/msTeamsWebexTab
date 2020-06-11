@@ -3,7 +3,6 @@ import json
 
 token = "validO365OAuthToken"
 
-
 def getTeamsList():
     url = "https://graph.microsoft.com/v1.0/groups?$select=id,displayName,resourceProvisioningOptions"
 
@@ -22,7 +21,6 @@ def getTeamsList():
         displayName = value['displayName']
         resourceProvisioningOptions = value['resourceProvisioningOptions']
         if len(resourceProvisioningOptions) >= 1:
-            print(id + " " + displayName)
             choice = input("Team: " + displayName + ". Add Webex Tab (y/n)?")
             if choice == "y":    
                 getChannelList(id)
@@ -43,7 +41,6 @@ def getChannelList(teamId):
     for value in values:
         channelId = value['id']
         displayName = value['displayName']
-        print(channelId + " " + displayName)
         if displayName == "General":
             addAppToTeams(teamId,channelId)
 
