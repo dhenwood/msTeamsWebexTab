@@ -10,6 +10,15 @@ A YouTube video of the code [can be found here](https://www.youtube.com/watch?v=
 
 ## Setup
 
-This script requires Microsoft authentication.
+In order to This script requires Microsoft authentication.
 
 ![step1](./static/images/azure1.png)
+
+1. Select App Registration from the left hand menu
+2. Select New Registration
+3. Provide a Name for the application
+4. Set the Redirect URI to Web and the value to; https://login.microsoftonline.com/common/oauth2/nativeclient
+
+![step2](./static/images/azure2.png)
+
+5. Copy both the Applicaiton (client) ID and Directory (tenant) ID
