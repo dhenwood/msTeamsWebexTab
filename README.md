@@ -6,8 +6,8 @@ This script automates adding a Webex Meetings Tab to all new Microsoft Teams cha
 
 ![sample](./static/images/addWebexTab.gif)
 
-[YouTube video](https://www.youtube.com/watch?v=Waone1IG_ag) - demo of Webex Tab being added
-[Tab Details](https://help.webex.com/ia89ccb/) - details relating to the integration
+- [YouTube video](https://www.youtube.com/watch?v=Waone1IG_ag) - demo of Webex Tab being added.
+- [Tab Details](https://help.webex.com/ia89ccb/) - details relating to the integration.
 
 
 ## Content
