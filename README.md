@@ -10,6 +10,7 @@ A full YouTube video of the code [can be found here](https://www.youtube.com/wat
 
 * [Microsoft Setup](#microsoft-setup)
 * [Python Setup](#python-setup)
+* [Caveats](#caveats)
 
 ## Microsoft Setup
 
@@ -50,6 +51,13 @@ The following needs to be updated within the **config.ini** file.
 
 1. Update **clientid** and **tenantid** from step 5 above
 2. Update **clientsecret** from step 9 above
-3. Set a **username** and **password**
+3. Set a **username** and **password** (requires appropriate permissions for Group.ReadWrite.all)
+4. The **lastcheck** field can be adjusted if you want the Webex Tab to be created to Teams after a certain date/time (ensure you keep the correct date/time format)
+5. _Do not change any fields in the **token** section_
 
+## Caveats
 
+The following known caveats exist;
+
+1. No automatic running of script when a new Team is created. Requires admin to trigger script at regular invervals (using tools like cron, etc) 
+2. Only adding Webex Tab to the General channel.
