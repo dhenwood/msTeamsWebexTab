@@ -8,9 +8,10 @@ This script automates adding a Webex Meetings Tab to all new Microsoft Teams cha
 
 A full YouTube video of the code [can be found here](https://www.youtube.com/watch?v=Waone1IG_ag)
 
-* [Setup](#setup)
+* [Microsoft Setup](#microsoft-setup)
+* [Python Setup](#python-setup)
 
-## Setup
+## Microsoft Setup
 
 The following setup is required to configure OAuth for the Microsoft Graph API's used.
 
@@ -42,3 +43,13 @@ The following setup is required to configure OAuth for the Microsoft Graph API's
 12. Select Microsoft Graph
 13. Select Delegated Permissions
 14. Select Group.ReadWrite.all (may require searching)
+
+## Python Setup
+
+The following needs to be updated within the **config.ini** file.
+
+1. Update **clientid** and **tenantid** from step 5 above
+2. Update **clientsecret** from step 9 above
+3. Set a **username** and **password**
+
+
