@@ -6,7 +6,8 @@ This script automates adding a Webex Meetings Tab to all new Microsoft Teams cha
 
 ![sample](./static/images/addWebexTab.gif)
 
-A full YouTube video of the code [can be found here](https://www.youtube.com/watch?v=Waone1IG_ag)
+* A YouTube video of the code running [can be found here](https://www.youtube.com/watch?v=Waone1IG_ag)
+* More details relating to the integration [can be found here](https://help.webex.com/ia89ccb/)
 
 * [Microsoft Setup](#microsoft-setup)
 * [Python Setup](#python-setup)
@@ -52,7 +53,7 @@ The following needs to be updated within the **config.ini** file.
 1. Update **clientid** and **tenantid** from step 5 above
 2. Update **clientsecret** from step 9 above
 3. Set a **username** and **password** (requires appropriate permissions for Group.ReadWrite.all)
-4. The **lastcheck** field can be adjusted if you want the Webex Tab to be created to Teams after a certain date/time (ensure you keep the correct date/time format)
+4. The **lastcheck** field can be adjusted if you want the Webex Tab to be added to Teams after a certain date/time (ensure you keep the correct date/time format)
 5. _Do not change any fields in the **token** section_
 
 ## Caveats
