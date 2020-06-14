@@ -2,9 +2,11 @@
 ![language:Python](https://img.shields.io/badge/Language-Python-blue.svg?style=flat-square)
 ![license:MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)
 
-Automatically add the Webex Tab into Microsoft Teams Channels
+This script automates adding a Webex Meetings Tab to all new Microsoft Teams channels that users may create.
 
-A YouTube video of the code [can be found here](https://www.youtube.com/watch?v=Waone1IG_ag)
+![sample](./static/images/addWebexTab.gif)
+
+A full YouTube video of the code [can be found here](https://www.youtube.com/watch?v=Waone1IG_ag)
 
 * [Setup](#setup)
 
