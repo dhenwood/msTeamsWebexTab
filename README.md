@@ -11,3 +11,5 @@ A YouTube video of the code [can be found here](https://www.youtube.com/watch?v=
 ## Setup
 
 This script requires Microsoft authentication.
+
+![step1](./static/images/azure1.png)
