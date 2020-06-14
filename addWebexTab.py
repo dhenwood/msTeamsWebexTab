@@ -2,12 +2,13 @@ import requests
 import json
 import configparser
 from datetime import datetime
+import calendar, time
 import pytz
 
-config = configparser.ConfigParser()
+config = configparser.ConfigParser(comment_prefixes='/', allow_no_value=True)
 config.read('config.ini')
 
-token = config['DEFAULT']['token']
+token = config['TOKEN']['token']
 
 
 def getTeamsList():
@@ -40,7 +41,7 @@ def getTeamsList():
 def checkIfNewer(teamId,displayName,createdDateTime):
     utc=pytz.UTC
 
-    lastCheckString = config['DEFAULT']['lastCheck']
+    lastCheckString = config['GENERAL']['lastCheck']
     lastCheckDate = datetime.strptime(lastCheckString, '%Y-%m-%dT%H:%M:%SZ')
     lastCheckTz = utc.localize(lastCheckDate)
 
@@ -73,7 +74,6 @@ def getChannelList(teamId):
             channelId = value['id']
             displayName = value['displayName']
             if displayName == "General":
-                #print("breakpoint")
                 addAppToTeams(teamId,channelId)
     else:
         print("getChannelList; failed with error code: " + str(response.status_code))
@@ -132,9 +132,116 @@ def resetLastCheck():
     dateTimeString = datetime_GMT.strftime("%Y-%m-%dT%H:%M:%SZ")
     print("Updated lastCheck: ", dateTimeString)
 
-    config['DEFAULT']['lastCheck'] = dateTimeString
+    config['GENERAL']['lastCheck'] = dateTimeString
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
 
 
-getTeamsList()
+
+
+def checkToken():
+    timeNow = calendar.timegm(time.gmtime())
+
+    tokenExpiry = config['TOKEN']['tokenexpire']
+    tokenExpInt = int(tokenExpiry)
+
+    sec90Days = 60 * 60 * 24 * 90 # 7,776,000
+    exp90Day = tokenExpInt + sec90Days
+
+    if timeNow < tokenExpInt:
+        # Token still active
+        print('Token Active')
+        getTeamsList()
+    elif timeNow < exp90Day:
+        # Token expired but still able to refresh
+        print('Token Expired, but refreshable')
+        refreshToken()
+    else:
+        # Token expired beyond 90 days. Need to re-generate.
+        print('Token full expired')
+        generateToken()
+
+
+
+def refreshToken():
+    client_id = config['USER']['clientid']
+    client_secret = config['USER']['clientsecret']
+    tenant_id = config['USER']['tenantid']
+    username = config['USER']['username']
+    password = config['USER']['password']
+    refresh_token = config['TOKEN']['refreshtoken']
+
+    token_url = 'https://login.microsoftonline.com/' + tenant_id + '/oauth2/token'
+    token_data = {
+     'grant_type': 'refresh_token',
+     'client_id': client_id,
+     'client_secret': client_secret,
+     'scope':'https://graph.microsoft.com',
+     'refresh_token': refresh_token
+    }
+
+    token_r = requests.post(token_url, data=token_data)
+
+    token = token_r.json().get('access_token')
+    refresh = token_r.json().get('refresh_token')
+    expires_on = token_r.json().get('expires_on')
+
+    writeTokensToConfig(token,refresh,expires_on)
+    #getTeamsList()
+
+    #writeToConfig = writeTokensToConfig(token,refresh,expires_on)
+    #if writeToConfig:
+        #getTeamsList()
+
+
+
+def generateToken():
+    client_id = config['USER']['clientid']
+    client_secret = config['USER']['clientsecret']
+    tenant_id = config['USER']['tenantid']
+    username = config['USER']['username']
+    password = config['USER']['password']
+
+    token_url = 'https://login.microsoftonline.com/' + tenant_id + '/oauth2/token'
+    token_data = {
+     'grant_type': 'password',
+     'client_id': client_id,
+     'client_secret': client_secret,
+     'resource': 'https://graph.microsoft.com',
+     'scope':'https://graph.microsoft.com',
+     'username': username,
+     'password': password
+    }
+
+    token_r = requests.post(token_url, data=token_data)
+
+    token = token_r.json().get('access_token')
+    refresh = token_r.json().get('refresh_token')
+    expires_on = token_r.json().get('expires_on')
+
+    writeTokensToConfig(token,refresh,expires_on)
+    #getTeamsList()
+    #writeToConfig = writeTokensToConfig(token,refresh,expires_on)
+    #if writeToConfig:
+        #getTeamsList()
+
+
+
+def writeTokensToConfig(localToken,refresh,expires_on):
+    global token
+
+    print('setting values in config.ini')
+
+    config['TOKEN']['token'] = localToken
+    config['TOKEN']['refreshToken'] = refresh
+    config['TOKEN']['tokenExpire'] = expires_on
+
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+    token = localToken
+    
+    getTeamsList()
+    #return True
+
+
+checkToken()
