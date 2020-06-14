@@ -6,13 +6,17 @@ This script automates adding a Webex Meetings Tab to all new Microsoft Teams cha
 
 ![sample](./static/images/addWebexTab.gif)
 
-A YouTube video of the code running [can be found here](https://www.youtube.com/watch?v=Waone1IG_ag). More details relating to the integration [can be found here](https://help.webex.com/ia89ccb/).
+[YouTube video](https://www.youtube.com/watch?v=Waone1IG_ag) - demo of Webex Tab being added
+[Tab Details](https://help.webex.com/ia89ccb/) - details relating to the integration
 
+
+## Content
 * [Microsoft Setup](#microsoft-setup)
 * [Python Setup](#python-setup)
+* [Running script](#running-script)
 * [Caveats](#caveats)
 
-## Microsoft Setup
+### Microsoft Setup
 
 The following setup is required to configure OAuth for the Microsoft Graph API's used.
 
@@ -45,7 +49,7 @@ The following setup is required to configure OAuth for the Microsoft Graph API's
 13. Select Delegated Permissions
 14. Select Group.ReadWrite.all (may require searching)
 
-## Python Setup
+### Python Setup
 
 The following needs to be updated within the **config.ini** file.
 
@@ -55,9 +59,14 @@ The following needs to be updated within the **config.ini** file.
 4. The **lastcheck** field can be adjusted if you want the Webex Tab to be added to Teams after a certain date/time (ensure you keep the correct date/time format)
 5. _Do not change any fields in the **token** section_
 
-## Caveats
+### Running Script
+Assuming the above steps were performed, the following command will first get an OAuth token, before performing the Microsoft Graph API's needed to add the Webex Tab to new Microsoft Teams channels.
 
-The following known caveats exist;
+```python addWebexTab.py``` 
 
-1. No automatic running of script when a new Team is created. Requires admin to trigger script at regular invervals (using tools like cron, etc) 
-2. Only adding Webex Tab to the General channel.
+### Caveats
+
+The following caveats exist;
+
+1. No automatic running of script when a new Team is created. Requires admin to trigger this script at regular invervals (using tools like cron, etc) 
+2. Currently only adding Webex Tab to the General channel.
