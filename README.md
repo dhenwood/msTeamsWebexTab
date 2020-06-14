@@ -22,3 +22,13 @@ In order to This script requires Microsoft authentication.
 ![step2](./static/images/azure2.png)
 
 5. Copy both the Applicaiton (client) ID and Directory (tenant) ID
+
+![step3](./static/images/azure3.png)
+
+6. Select Certificates and secrets from the left hand menu
+7. Select New client secret button
+8. Set a name and duration for the secret. Then select Add.
+
+![step4](./static/images/azure4.png)
+
+9. This will create the client secret. Copy this value
