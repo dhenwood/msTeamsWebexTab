@@ -12,7 +12,7 @@ A full YouTube video of the code [can be found here](https://www.youtube.com/wat
 
 ## Setup
 
-In order to This script requires Microsoft authentication.
+The following setup is required to configure OAuth for the Microsoft Graph API's used.
 
 ![step1](./static/images/azure1.png)
 
@@ -34,3 +34,11 @@ In order to This script requires Microsoft authentication.
 ![step4](./static/images/azure4.png)
 
 9. This will create the client secret. Copy this value
+
+![step5](./static/images/azure5.png)
+
+10. Select API Permissions from the left hand menu
+11. Select Add a Permission
+12. Select Microsoft Graph
+13. Select Delegated Permissions
+14. Select Group.ReadWrite.all (may require searching)
