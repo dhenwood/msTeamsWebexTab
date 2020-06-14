@@ -187,11 +187,6 @@ def refreshToken():
     expires_on = token_r.json().get('expires_on')
 
     writeTokensToConfig(token,refresh,expires_on)
-    #getTeamsList()
-
-    #writeToConfig = writeTokensToConfig(token,refresh,expires_on)
-    #if writeToConfig:
-        #getTeamsList()
 
 
 
@@ -220,10 +215,6 @@ def generateToken():
     expires_on = token_r.json().get('expires_on')
 
     writeTokensToConfig(token,refresh,expires_on)
-    #getTeamsList()
-    #writeToConfig = writeTokensToConfig(token,refresh,expires_on)
-    #if writeToConfig:
-        #getTeamsList()
 
 
 
@@ -241,7 +232,7 @@ def writeTokensToConfig(localToken,refresh,expires_on):
     token = localToken
     
     getTeamsList()
-    #return True
+
 
 
 checkToken()
