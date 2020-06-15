@@ -22,7 +22,7 @@ The following setup is required to configure OAuth for the Microsoft Graph API's
 
 ![step1](./static/images/azure1.png)
 
-1. Select 'App Registration' from the left hand menu
+1. From Azure Active Directory Admin Portal, select 'App Registration' from the left hand menu
 2. Select 'New Registration'
 3. Provide a Name for the application
 4. Set the Redirect URI to Web and enter the value; https://login.microsoftonline.com/common/oauth2/nativeclient
@@ -47,7 +47,7 @@ The following setup is required to configure OAuth for the Microsoft Graph API's
 11. Select 'Add a Permission'
 12. Select 'Microsoft Graph'
 13. Select 'Delegated Permissions'
-14. Select 'Group.ReadWrite.all' (may require searching)
+14. Select 'Group.ReadWrite.all' (may require searching). Save changes. You will also need to 'Grant admin consent'.
 
 ## Python Setup
 
