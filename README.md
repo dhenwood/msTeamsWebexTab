@@ -47,7 +47,7 @@ The following setup is required to configure OAuth for the Microsoft Graph API's
 11. Select 'Add a Permission'
 12. Select 'Microsoft Graph'
 13. Select 'Delegated Permissions'
-14. Select 'Group.ReadWrite.all' (may require searching). Save changes. You will also need to 'Grant admin consent'.
+14. Select 'Group.ReadWrite.all' (may require searching). Save changes. You will also need to 'Grant admin consent' to apply the changes.
 
 ## Python Setup
 
