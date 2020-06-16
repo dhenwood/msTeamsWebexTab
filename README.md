@@ -68,3 +68,4 @@ Assuming the above steps were performed, the following command will first get an
 The following caveats exist;
 1. No automatic running of script when a new Team is created. Currently there does not appear to be a method of being notified of a new Team and as such, it requires the script to run at regular invervals (using tools like cron, etc).
 2. Currently the script only adds the Webex Tab to the General channel. Exploring ways to add the tab to all channels that are created (without the potential load of polling all channels across an organisation continually)
+3. For simplicity reasons, the script leverages username/password to authenticate. For Office 365 deployments that leverage MFA (multi-factor authentication), an alternate means of obtaining the initial token (and refresh token) will need to be performed.
